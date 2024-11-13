@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ErrorBoundary from "./ErrorBoundary";
 import IESupport from "./InternetSupport";
+import { Provider } from "react-redux";
+import Store from "./Redux/Store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 /**
@@ -25,7 +27,7 @@ const IS_IE = isIE();
 root.render(
   <React.StrictMode>
     <ErrorBoundary fallback="Something Went Wrong Please Refresh The Page.">
-      {IS_IE ? <IESupport /> : <App />}
+      <Provider store={Store}>{IS_IE ? <IESupport /> : <App />}</Provider>
     </ErrorBoundary>
   </React.StrictMode>
 );
