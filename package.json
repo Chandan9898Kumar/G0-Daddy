@@ -26,6 +26,14 @@
       "react-app/jest"
     ]
   },
+  "keywords": [
+    "GoDaddy",
+    "Git",
+    "pwa",
+    "ssr",
+    "plugins"
+  ],
+  "author": "chandan Company, LLC",
   "browserslist": {
     "production": [
       ">0.2%",

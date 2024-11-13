@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./NavBar/NavBar";
 
 /**
  * The `lazyWithRetry` function asynchronously imports a component and retries with a page reload on
@@ -26,8 +27,9 @@ const ErrorPage = lazyWithRetry(() => import("./ErrorPage/ErrorPage"));
 
 function App() {
   return (
-    <div className="App">
+    <>
       <BrowserRouter future={{ v7_startTransition: true }}>
+        <NavBar />
         <Suspense fallback="Loading...">
           <Routes>
             <Route path="/">
@@ -38,7 +40,7 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
