@@ -11,7 +11,6 @@ const ProductDetailsSlice = createSlice({
   initialState,
   reducers: {
     fetchProductDetails(state, action) {
-      console.log(action, "action");
       return {
         ...state,
         ...action.payload,

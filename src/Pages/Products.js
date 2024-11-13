@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductData } from "../Redux/ProductRedux/ProductRedux";
 import Spinner from "../Components/Loader/Loader";
+import ErrorPage from "../ErrorPage/ErrorPage";
 const URL = "https://api.github.com/orgs/godaddy/repos";
 const ShowHeader = () => {
   return (
@@ -47,6 +48,9 @@ const Products = () => {
     fetchProducts();
   }, [dispatch]);
 
+  if (isError) {
+    return <ErrorPage />;
+  }
   return (
     <div className="container">
       <ShowHeader />

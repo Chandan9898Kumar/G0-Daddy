@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchProductDetails } from "../Redux/ProductRedux/ProductDetailsRedux";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../Components/Loader/Loader";
+import ErrorPage from "../ErrorPage/ErrorPage";
 const URL = "https://api.github.com/orgs/godaddy/repos";
 const ShowHeader = () => {
   return (
@@ -54,6 +55,10 @@ const ProductDetails = () => {
     fetchDetails();
   }, [dispatch, id]);
 
+  if (isError) {
+    return <ErrorPage />;
+  }
+
   return (
     <div className="container">
       <Button name="Go Back" isDisabled={false} onClick={() => navigate(-1)} />
@@ -74,9 +79,7 @@ const ShowProductsDetails = ({ productDetailsData, id }) => {
   return (
     <>
       <div className="title">
-        <h1>
-          {productDetailsData?.name} : {id}
-        </h1>
+        <h1>ID : {id}</h1>
       </div>
       <div className="flex-container">
         {productDetailsData?.owner?.avatar_url && (
@@ -88,6 +91,10 @@ const ShowProductsDetails = ({ productDetailsData, id }) => {
           />
         )}
         <div className="cocktail-infos">
+          <div className="row">
+            <h3 className="label">Name: </h3>
+            <p className="text">{productDetailsData?.name ?? "N / A"}</p>
+          </div>
           <div className="row">
             <h3 className="label">Description: </h3>
             <p className="text">{productDetailsData.description ?? "N / A"}</p>
