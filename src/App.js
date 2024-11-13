@@ -2,7 +2,7 @@ import "./App.css";
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar/NavBar";
-
+import Spinner from "./Components/Loader/Loader";
 /**
  * The `lazyWithRetry` function asynchronously imports a component and retries with a page reload on
  * error.
@@ -30,7 +30,7 @@ function App() {
     <>
       <BrowserRouter future={{ v7_startTransition: true }}>
         <NavBar />
-        <Suspense fallback="Loading...">
+        <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/">
               <Route index element={<Products />} />

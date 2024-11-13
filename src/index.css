@@ -23,6 +23,7 @@ img {
 }
 
 .container {
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -142,13 +143,12 @@ nav .nav-items {
 
 .flex-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
 }
 
 .flex-container .cocktail-img {
-  width: 100%;
   height: 500px;
   object-fit: cover;
   object-position: center;
@@ -162,6 +162,29 @@ nav .nav-items {
 
 .cocktail-infos .row .label {
   font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* error component styling */
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  height: 60vh;
+}
+
+.error-page .error-code {
+  font-size: 150px;
+  font-weight: 600;
+  color: #00a8ff;
+}
+
+.error-page .error-text {
+  font-size: 34px;
   font-weight: 600;
   color: #000;
 }

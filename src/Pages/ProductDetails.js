@@ -3,6 +3,7 @@ import Button from "../Components/Button/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchProductDetails } from "../Redux/ProductRedux/ProductDetailsRedux";
 import { useSelector, useDispatch } from "react-redux";
+import Spinner from "../Components/Loader/Loader";
 const URL = "https://api.github.com/orgs/godaddy/repos";
 const ShowHeader = () => {
   return (
@@ -57,7 +58,12 @@ const ProductDetails = () => {
     <div className="container">
       <Button name="Go Back" isDisabled={false} onClick={() => navigate(-1)} />
       <ShowHeader />
-      <ShowProductsDetails productDetailsData={productDetailsData} id={id} />
+
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ShowProductsDetails productDetailsData={productDetailsData} id={id} />
+      )}
     </div>
   );
 };
@@ -65,47 +71,54 @@ const ProductDetails = () => {
 export default ProductDetails;
 
 const ShowProductsDetails = ({ productDetailsData, id }) => {
-  console.log(productDetailsData, "productDetailsData");
   return (
     <>
+      <div className="title">
+        <h1>
+          {productDetailsData?.name} : {id}
+        </h1>
+      </div>
       <div className="flex-container">
-        <div>
-          <div className="title">
-            <h1>
-              {productDetailsData?.name} : {id}
-            </h1>
+        {productDetailsData?.owner?.avatar_url && (
+          <img
+            src={productDetailsData.owner.avatar_url}
+            alt={productDetailsData.name}
+            className="cocktail-img"
+            loading="lazy"
+          />
+        )}
+        <div className="cocktail-infos">
+          <div className="row">
+            <h3 className="label">Description: </h3>
+            <p className="text">{productDetailsData.description ?? "N / A"}</p>
           </div>
-          <div className="flex-container">
-            {productDetailsData?.owner?.avatar_url && (
-              <img
-                src={productDetailsData.owner.avatar_url}
-                alt={productDetailsData.name}
-                className="cocktail-img"
-                loading="lazy"
-              />
-            )}
-            {/* <div className="cocktail-infos">
-						<div className="row">
-							<h3 className="label">Name: </h3>
-							<p className="text">{product.name}</p>
-						</div>
-						<div className="row">
-							<h3 className="label">Category: </h3>
-							<p className="text">{product.category}</p>
-						</div>
-						<div className="row">
-							<h3 className="label">Info: </h3>
-							<p className="text">{product.info}</p>
-						</div>
-						<div className="row">
-							<h3 className="label">Instructions: </h3>
-							<p className="text">{product.instructions}</p>
-						</div>
-						<div className="row">
-							<h3 className="label">Ingredients: </h3>
-							<p className="text">{product.ingredients}</p>
-						</div>
-					</div> */}
+          <div className="row">
+            <h3 className="label">Watchers: </h3>
+            <p className="text">{productDetailsData.watchers ?? "N / A"}</p>
+          </div>
+          <div className="row">
+            <h3 className="label">Forks: </h3>
+            <p className="text">{productDetailsData.forks ?? "N / A"}</p>
+          </div>
+          <div className="row">
+            <h3 className="label">Open Issues: </h3>
+            <p className="text">{productDetailsData.open_issues ?? "N / A"}</p>
+          </div>
+          <div className="row">
+            <h3 className="label">Language: </h3>
+            <p className="text">{productDetailsData.language ?? "N / A"}</p>
+          </div>
+          <div className="row">
+            <h3 className="label">Link To Repo : </h3>
+            <p className="text">
+              <a
+                href={productDetailsData?.owner?.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Click here
+              </a>
+            </p>
           </div>
         </div>
       </div>

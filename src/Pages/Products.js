@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductData } from "../Redux/ProductRedux/ProductRedux";
-
+import Spinner from "../Components/Loader/Loader";
 const URL = "https://api.github.com/orgs/godaddy/repos";
 const ShowHeader = () => {
   return (
@@ -50,7 +50,7 @@ const Products = () => {
   return (
     <div className="container">
       <ShowHeader />
-      <ShowProducts productData={productData} />
+      {isLoading ? <Spinner /> : <ShowProducts productData={productData} />}
     </div>
   );
 };
