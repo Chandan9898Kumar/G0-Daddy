@@ -28,7 +28,11 @@ const ErrorPage = lazyWithRetry(() => import("./ErrorPage/ErrorPage"));
 function App() {
   return (
     <>
-      <BrowserRouter future={{ v7_startTransition: true }}>
+      <BrowserRouter
+        future={{
+          v7_relativeSplatPath: true,
+        }}
+      >
         <NavBar />
         <Suspense fallback={<Spinner />}>
           <Routes>
