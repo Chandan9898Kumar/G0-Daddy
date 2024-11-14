@@ -2,11 +2,11 @@
 
 `To run the project, follow these steps:`
 
-1. ### Verify the File
-
-   1. Open the file in your preferred code editor (e.g., `Visual Studio Code`).
-   2. Check if you are in the correct directory by running the command : `pwd` (Present Working Directory) in your terminal.
-   3. If you are not in the `godaddy directory`, navigate to it by running the command : `cd godaddy`.
+1. ### Verify the File : 
+   1. Clone the app
+   2. Open the file in your preferred code editor (e.g., `Visual Studio Code`).
+   3. Check if you are in the correct directory by running the command : `pwd` (Present Working Directory) in your terminal.
+   4. If you are not in the `godaddy directory`, navigate to it by running the command : `cd godaddy`.
 
 2. ### Verify File Presence
 
